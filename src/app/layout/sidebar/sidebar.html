@@ -1,0 +1,27 @@
+<div class="noted_sidenav_container">
+  <mat-toolbar>
+    <button
+      mat-icon-button
+      (click)="toggleSidenav(snav)"
+      [hidden]="!isMobile()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Noted</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="noted-sidenav_container">
+    <mat-sidenav
+      #snav
+      [mode]="isMobile() ? 'over' : 'side'"
+      [opened]="!isMobile() || sidenavOpened"
+      [disableClose]="!isMobile()"
+    >
+      Start
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div>Main content here</div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
