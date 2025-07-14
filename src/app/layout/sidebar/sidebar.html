@@ -1,4 +1,4 @@
-<div class="noted_sidenav_container">
+<div class="noted_container">
   <mat-toolbar>
     <button
       mat-icon-button
@@ -7,10 +7,13 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
-    <span>Noted</span>
+    <div class="noted_logo">
+      <img class="noted_logo_img" src="assets/logo.png" />
+      <h1 class="noted_logo_name">Noted</h1>
+    </div>
   </mat-toolbar>
 
-  <mat-sidenav-container class="noted-sidenav_container">
+  <mat-sidenav-container class="noted_sidenav_container">
     <mat-sidenav
       #snav
       [mode]="isMobile() ? 'over' : 'side'"

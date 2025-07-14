@@ -3,10 +3,11 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [MatSidenavModule, MatToolbarModule, MatIconModule],
+  imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })

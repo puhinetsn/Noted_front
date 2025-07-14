@@ -1,0 +1,14 @@
+.noted {
+  &_container {
+    .mat-toolbar,
+    .mat-sidenav-content,
+    .mat-sidenav {
+      background-color: #ffffff;
+    }
+  }
+  &_logo {
+    &_img {
+      width: 70px;
+    }
+  }
+}
