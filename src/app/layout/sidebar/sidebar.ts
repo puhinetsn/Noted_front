@@ -20,7 +20,7 @@ export class Sidebar {
   constructor() {
     const media = inject(MediaMatcher);
 
-    this._mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQuery = media.matchMedia('(max-width: 720px)');
     this.isMobile.set(this._mobileQuery.matches);
     this._mobileQueryListener = () =>
       this.isMobile.set(this._mobileQuery.matches);

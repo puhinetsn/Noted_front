@@ -2,6 +2,8 @@
 // For more information: https://material.angular.dev/guide/theming
 @use "@angular/material" as mat;
 @use "./app/styles/_theme-colors.scss" as my-theme;
+@use "mixins" as *;
+@use "variables" as *;
 
 html {
   @include mat.theme(
@@ -16,15 +18,38 @@ html {
   );
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
 }
 body {
-  margin: 0;
   font-family: Montserrat;
 }
 
 h1 {
   font-family: Winky;
+}
+
+@each $name, $glyph in $font_size {
+  .text-#{$name} {
+    font-size: $glyph;
+  }
+}
+
+@each $name, $glyph in $font-weights {
+  .text-#{$name} {
+    font-weight: $glyph;
+  }
+}
+
+@each $name, $glyph in $font-colors {
+  .text-#{$name} {
+    color: $glyph;
+  }
 }
