@@ -1,0 +1,76 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.noted {
+  &_container {
+    height: calc(100% - 90.8px);
+
+    .mat-toolbar,
+    .mat-sidenav-content,
+    .mat-sidenav {
+      background-color: #ffffff;
+    }
+
+    .mat-sidenav {
+      border-radius: 0;
+      padding: 10px;
+      border-right: 2px solid #ececec;
+    }
+
+    .mat-sidenav-container {
+      height: 100%;
+    }
+
+    .mat-toolbar {
+      padding: 20px 10px;
+      gap: 20px;
+      @include flex(row, flex-start);
+      border-bottom: 1px solid #ececec;
+      height: fit-content;
+    }
+  }
+
+  &_logo {
+    @include flex(row, space-around);
+    gap: 5px;
+    &_img {
+      width: 50px;
+      height: 50px;
+    }
+
+    &_name {
+      font-family: "Winky Rough", sans-serif;
+      letter-spacing: 7px;
+    }
+  }
+}
+
+@include md {
+  .noted {
+    &_container {
+      height: calc(100% - 120.8px);
+
+      .mat-sidenav {
+        padding: 30px 20px;
+      }
+
+      .mat-toolbar {
+        padding: 20px;
+      }
+    }
+
+    &_content {
+      padding: 30px 20px;
+    }
+
+    &_logo {
+      gap: 10px;
+
+      &_img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}

@@ -2,8 +2,9 @@
 // For more information: https://material.angular.dev/guide/theming
 @use "@angular/material" as mat;
 @use "./app/styles/_theme-colors.scss" as my-theme;
-@use "mixins" as *;
-@use "variables" as *;
+@use "./app/styles/mixins" as *;
+@use "./app/styles/variables" as *;
+@use "sass:map";
 
 html {
   @include mat.theme(
@@ -27,29 +28,27 @@ html {
 html,
 body {
   height: 100%;
-}
-body {
   font-family: Montserrat;
 }
 
-h1 {
-  font-family: Winky;
+.main-dialog .mat-mdc-dialog-surface {
+  border-radius: 0;
 }
 
 @each $name, $glyph in $font_size {
-  .text-#{$name} {
+  .mat-typography .text-#{$name} {
     font-size: $glyph;
   }
 }
 
 @each $name, $glyph in $font-weights {
-  .text-#{$name} {
+  .mat-typography .text-#{$name} {
     font-weight: $glyph;
   }
 }
 
 @each $name, $glyph in $font-colors {
-  .text-#{$name} {
+  .mat-typography .text-#{$name} {
     color: $glyph;
   }
 }

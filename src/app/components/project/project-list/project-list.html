@@ -1,0 +1,12 @@
+<div class="projects">
+  @for(project of projects(); track project.id){
+  <app-projects
+    class="projects_item"
+    [project_name]="project.name"
+  ></app-projects>
+  }
+  <app-new-project
+    class="projects_item"
+    (click)="openDialog()"
+  ></app-new-project>
+</div>

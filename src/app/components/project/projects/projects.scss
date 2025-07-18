@@ -1,0 +1,16 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.project {
+  @include flex(row, flex-start);
+  background-color: #ececec;
+  border: 2px solid #ececec;
+  padding: 10px 5px 10px 25px;
+  gap: 10px;
+
+  &_img {
+    width: 24px;
+    height: 24px;
+  }
+}

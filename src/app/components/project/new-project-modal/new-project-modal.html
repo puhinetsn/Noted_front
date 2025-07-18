@@ -1,0 +1,11 @@
+<h3 mat-dialog-title>Enter Project Name:</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Enter Here...</mat-label>
+    <input matInput [(ngModel)]="name" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onClose()">Cancel</button>
+  <button matButton (click)="onCreate()" cdkFocusInitial>Create</button>
+</mat-dialog-actions>

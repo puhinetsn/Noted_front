@@ -1,0 +1,26 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.new-project {
+  @include flex(row, flex-start);
+  border: 2px solid #ececec;
+  background-color: transparent;
+  padding: 10px 5px 10px 25px;
+  gap: 10px;
+  width: 100%;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 1.17em;
+
+  &_icon {
+    height: 24px;
+    width: 24px;
+
+    .mat-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

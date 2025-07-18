@@ -1,0 +1,10 @@
+@use "mixins" as *;
+
+.projects {
+  @include flex(column, flex-start);
+  gap: 7px;
+
+  &_item {
+    width: 100%;
+  }
+}
