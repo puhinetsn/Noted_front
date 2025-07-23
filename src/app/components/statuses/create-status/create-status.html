@@ -1,0 +1,12 @@
+<div class="chip" [style.background-color]="color()">
+  <input
+    #nameInput
+    type="text"
+    name="name"
+    class="chip_name text-xl"
+    [(ngModel)]="name"
+    (keydown.enter)="onSaveStatus()"
+  />
+
+  <input class="chip_color" name="color" type="color" [(ngModel)]="color" />
+</div>

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { ProjectList } from '../project/project-list/project-list';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -14,6 +15,7 @@ import { ProjectList } from '../project/project-list/project-list';
     MatIconModule,
     MatButtonModule,
     ProjectList,
+    RouterOutlet,
   ],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',

@@ -1,0 +1,12 @@
+@use "mixins" as *;
+
+.tasks {
+  &_container {
+    @include flex(column, center);
+    gap: 15px;
+  }
+  &_list,
+  &_status {
+    width: 100%;
+  }
+}

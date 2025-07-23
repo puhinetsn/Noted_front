@@ -1,0 +1,12 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "sass:map";
+
+.new-status {
+  border: 0;
+  background-color: #ececec;
+  width: 100%;
+  @include flex(row, center);
+  padding: 5px;
+  border-radius: 10px;
+}

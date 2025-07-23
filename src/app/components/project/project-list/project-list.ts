@@ -12,10 +12,11 @@ import { Project } from '../../../models/project.type';
 import { ProjectsService } from '../../../services/projects';
 import { MatDialog } from '@angular/material/dialog';
 import { NewProjectModal } from '../new-project-modal/new-project-modal';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
-  imports: [Projects, NewProject],
+  imports: [Projects, NewProject, RouterLink],
   templateUrl: './project-list.html',
   styleUrl: './project-list.scss',
 })
@@ -47,6 +48,10 @@ export class ProjectList implements OnInit {
         this.createProject(result);
       }
     });
+  }
+
+  projectLink(project: Project): string {
+    return `${project.id}`;
   }
 
   private createProject(name: string) {

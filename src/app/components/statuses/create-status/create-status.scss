@@ -1,0 +1,37 @@
+@use "mixins" as *;
+
+.chip {
+  border-radius: 10px;
+  width: 100%;
+  @include flex(row, center);
+  gap: 10px;
+  padding: 5px;
+
+  &_name {
+    color: #fff;
+    border: 0;
+    outline: 0;
+    font-family: Montserrat;
+    text-align: center;
+    background-color: transparent;
+
+    &:focus,
+    &:focus-within,
+    &:active {
+      border: 0;
+      outline: 0;
+    }
+  }
+
+  &_color {
+    caret-color: transparent;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    &:focus-visible,
+    &:active {
+      border-color: black;
+    }
+  }
+}

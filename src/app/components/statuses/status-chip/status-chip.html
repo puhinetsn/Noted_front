@@ -1,0 +1,12 @@
+<div class="chip" [style.background-color]="status().status_color">
+  <h3 class="text-tertiary text-regular chip_name">
+    {{ status().status_name }}
+  </h3>
+
+  <input
+    [(colorPicker)]="color"
+    [style.background-color]="color"
+    (keydown)="blockKeyboardEvent($event)"
+    class="chip_color"
+  />
+</div>
