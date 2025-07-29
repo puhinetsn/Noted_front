@@ -4,17 +4,10 @@ import { Status } from '../../../models/status.type';
 
 @Component({
   selector: 'app-status-chip',
-  imports: [ColorPickerDirective],
+  imports: [],
   templateUrl: './status-chip.html',
   styleUrl: './status-chip.scss',
 })
 export class StatusChip {
-  color = '#5071b7';
   status = input.required<Status>();
-  editable = input(false);
-  chipName = signal('test');
-
-  blockKeyboardEvent(event: KeyboardEvent): void {
-    event.preventDefault();
-  }
 }

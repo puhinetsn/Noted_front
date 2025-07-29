@@ -1,0 +1,25 @@
+@use "mixins" as *;
+
+.low_priority {
+  color: #2854c5;
+}
+
+.medium_priority {
+  color: #48752c;
+}
+
+.high_priority {
+  color: #a96424;
+}
+
+.critical_priority {
+  color: #8c1a10;
+}
+
+.to-column {
+  @include flex(row, space-between);
+}
+
+.priority_option {
+  @include flex(row, space-between);
+}

@@ -24,14 +24,21 @@
   }
 
   &_color {
-    caret-color: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
     width: 24px;
     height: 24px;
-    border-radius: 50%;
+    border: none;
+    cursor: pointer;
 
-    &:focus-visible,
-    &:active {
-      border-color: black;
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    &::-webkit-color-swatch {
+      border-radius: 50%;
+      border: 2px solid #2f3131;
     }
   }
 }

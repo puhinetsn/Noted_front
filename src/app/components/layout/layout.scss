@@ -31,6 +31,10 @@
     }
   }
 
+  &_content {
+    padding: 15px 10px;
+  }
+
   &_logo {
     @include flex(row, space-around);
     gap: 5px;

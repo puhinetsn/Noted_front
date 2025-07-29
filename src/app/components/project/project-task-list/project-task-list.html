@@ -1,6 +1,11 @@
 <div class="list_container">
-  @for (status of statuses(); track status.id){
-  <app-status-tasks class="list_item" [status]="status"></app-status-tasks>
+  @for (task of filteredTasks(); track task.status.id){
+  <app-status-tasks
+    class="list_item"
+    [status]="task.status"
+    (saveTask)="onSaveTask($event)"
+    [tasks]="task.statusTasks"
+  ></app-status-tasks>
   } @if(newStatusCreation()){
   <app-create-status
     class="list_item"

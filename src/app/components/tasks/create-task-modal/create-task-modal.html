@@ -1,0 +1,52 @@
+<h3 mat-dialog-title>Enter Task Info:</h3>
+<mat-dialog-content>
+  <form [formGroup]="task">
+    <mat-form-field>
+      <mat-label for="name">Task Name:</mat-label>
+      <input id="name" matInput type="text" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label for="description">Task Description: </mat-label>
+      <textarea
+        id="description"
+        matInput
+        formControlName="description"
+        rows="5"
+        cols="36"
+      ></textarea>
+    </mat-form-field>
+    <div class="to-column">
+      <mat-form-field>
+        <mat-label for="priority">Choose Priority:</mat-label>
+        <mat-select [(value)]="selectedPriority" formControlName="priority">
+          @for (option of prioritySelectOptions; track option) {
+          <div class="priority_option">
+            <mat-icon [class]="option.color">lens</mat-icon>
+            <mat-option [value]="option.value">{{ option.name }}</mat-option>
+          </div>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter a date range: </mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            formControlName="begin_date"
+            placeholder="Start date"
+          />
+          <input matEndDate formControlName="end_date" placeholder="End date" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onClose()">Cancel</button>
+  <button matButton (click)="onCreate()" cdkFocusInitial>Create</button>
+</mat-dialog-actions>

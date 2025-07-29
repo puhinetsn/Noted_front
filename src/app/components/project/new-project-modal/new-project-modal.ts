@@ -1,5 +1,11 @@
-import { Component, inject, model, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialogActions,
@@ -20,19 +26,25 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogTitle,
     MatDialogContent,
     MatDialogActions,
+    ReactiveFormsModule,
   ],
   templateUrl: './new-project-modal.html',
   styleUrl: './new-project-modal.scss',
 })
 export class NewProjectModal {
   readonly dialogRef = inject(MatDialogRef<NewProjectModal>);
-  name = signal<string>('');
+  projectName = new FormGroup({
+    name: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.maxLength(120)],
+    }),
+  });
 
   onClose(): void {
     this.dialogRef.close();
   }
 
   onCreate(): void {
-    this.dialogRef.close(this.name());
+    this.dialogRef.close(this.projectName.value.name);
   }
 }

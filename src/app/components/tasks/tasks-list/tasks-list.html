@@ -1,1 +1,9 @@
-<div class="tasks-container"></div>
+<div class="tasks_container">
+  @for(task of tasks(); track task.id){
+  <app-task class="tasks_item" [task]="task"></app-task>
+  }
+
+  <button class="tasks_new" (click)="openDialog()">
+    <mat-icon class="tasks_new_icon">add_2</mat-icon>
+  </button>
+</div>
