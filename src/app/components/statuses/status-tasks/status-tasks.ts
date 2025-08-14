@@ -17,6 +17,7 @@ export class StatusTasks {
   status = input.required<Status>();
   saveTask = output<CreateStatusTask>();
   tasks = input.required<Task[]>();
+  statuses = input.required<Status[]>();
 
   onSaveTask(info: CreateTaskFormData) {
     const task: CreateStatusTask = {

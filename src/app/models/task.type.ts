@@ -9,6 +9,7 @@ export interface Task {
   priority: TaskPriority;
   begin_date: Date | null;
   end_date: Date | null;
+  ChangeLog: [];
 }
 
 export interface TaskFields {

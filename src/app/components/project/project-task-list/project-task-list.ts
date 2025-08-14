@@ -25,7 +25,7 @@ import { Task } from '../../../models/task.type';
   styleUrl: './project-task-list.scss',
 })
 export class ProjectTaskList implements OnInit {
-  statuses = signal<Status[] | undefined>(undefined);
+  statuses = signal<Status[]>([]);
   tasks = signal<Task[] | undefined>(undefined);
   private destroyRef = inject(DestroyRef);
   private statusesService = inject(StatusesService);

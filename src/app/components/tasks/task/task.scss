@@ -10,16 +10,19 @@
     @include flex(column, space-between);
     align-items: flex-start;
     gap: 5px;
+    width: 100%;
   }
 
   &_name {
     background-color: map.get(vars.$task-colors, secondary);
     border-radius: 10px;
     width: 100%;
+    max-width: 100%;
     padding: 5px;
-    max-height: min-content;
+
     &_item {
       width: 100%;
+
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

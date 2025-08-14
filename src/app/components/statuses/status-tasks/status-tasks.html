@@ -4,5 +4,7 @@
     class="tasks_list"
     (saveTask)="onSaveTask($event)"
     [tasks]="tasks()"
+    [status]="status().id"
+    [statuses]="statuses()"
   ></app-tasks-list>
 </div>

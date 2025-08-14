@@ -5,6 +5,7 @@
     [status]="task.status"
     (saveTask)="onSaveTask($event)"
     [tasks]="task.statusTasks"
+    [statuses]="statuses()"
   ></app-status-tasks>
   } @if(newStatusCreation()){
   <app-create-status
