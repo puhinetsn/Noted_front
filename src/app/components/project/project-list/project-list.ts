@@ -50,6 +50,13 @@ export class ProjectList implements OnInit {
     });
   }
 
+  onProjectDelete(id: number) {
+    this.projectsService.removeProject(id);
+    this.projects.update((projects) =>
+      projects ? projects.filter((project) => project.id !== id) : []
+    );
+  }
+
   projectLink(project: Project): string {
     return `${project.id}`;
   }

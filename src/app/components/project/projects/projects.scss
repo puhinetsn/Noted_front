@@ -14,8 +14,13 @@
     height: 24px;
   }
 
-  &_edit {
+  &_tool {
     display: none;
+  }
+
+  &_tools {
+    @include flex(row, space-between);
+    gap: 5px;
   }
 
   &:hover {
@@ -25,7 +30,7 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    .project_edit {
+    .project_tool {
       display: block;
     }
   }

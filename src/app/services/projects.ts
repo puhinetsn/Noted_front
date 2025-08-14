@@ -17,4 +17,8 @@ export class ProjectsService {
   createProject(info: ProjectFields): Observable<Project> {
     return this.httpClient.post<Project>(`${this.url}/projects`, info);
   }
+
+  removeProject(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.url}/projects/${id}`);
+  }
 }
