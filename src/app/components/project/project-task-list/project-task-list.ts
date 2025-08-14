@@ -34,6 +34,12 @@ export class ProjectTaskList implements OnInit {
   newStatusCreation = signal(false);
   projectId = '';
 
+  onTaskDelete(id: number) {
+    this.tasks.update((tasks) =>
+      tasks ? tasks.filter((task) => task.id !== id) : []
+    );
+  }
+
   filteredTasks = computed(() => {
     const statuses = this.statuses();
     const tasks = this.tasks();

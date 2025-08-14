@@ -9,7 +9,12 @@
     [cdkDropListConnectedTo]="createStatusIds()"
   >
     @for (task of tasks(); track task.id) {
-    <app-task class="tasks_item" cdkDrag [task]="task"></app-task>
+    <app-task
+      class="tasks_item"
+      cdkDrag
+      [task]="task"
+      (taskRemoved)="onTaskDelete(task.id)"
+    ></app-task>
     }
   </div>
 

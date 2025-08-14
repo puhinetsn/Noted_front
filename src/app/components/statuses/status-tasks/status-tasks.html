@@ -6,5 +6,6 @@
     [tasks]="tasks()"
     [status]="status().id"
     [statuses]="statuses()"
+    (taskRemoved)="onTaskDelete($event)"
   ></app-tasks-list>
 </div>

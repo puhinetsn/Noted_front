@@ -19,6 +19,12 @@ export class StatusTasks {
   tasks = input.required<Task[]>();
   statuses = input.required<Status[]>();
 
+  taskRemoved = output<number>();
+
+  onTaskDelete(id: number) {
+    this.taskRemoved.emit(id);
+  }
+
   onSaveTask(info: CreateTaskFormData) {
     const task: CreateStatusTask = {
       ...info,

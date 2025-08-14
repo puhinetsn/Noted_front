@@ -30,6 +30,11 @@ export class TasksList {
   status = input.required<number>();
   statuses = input.required<Status[]>();
   tasksService = inject(TaskService);
+  taskRemoved = output<number>();
+
+  onTaskDelete(id: number) {
+    this.taskRemoved.emit(id);
+  }
 
   createStatusIds() {
     return this.statuses().map((status) => `tasks-${status.id}`);

@@ -21,4 +21,8 @@ export class TaskService {
   findAndUpdateTask(id: number, info: TaskFields): Observable<Task> {
     return this.httpClient.put<Task>(`${this.url}/tasks/${id}`, info);
   }
+
+  removeTask(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.url}/tasks/${id}`);
+  }
 }

@@ -13,6 +13,11 @@
     width: 100%;
   }
 
+  &_delete {
+    @include flex(row, flex-end);
+    width: 100%;
+  }
+
   &_name {
     background-color: map.get(vars.$task-colors, secondary);
     border-radius: 10px;
@@ -22,7 +27,6 @@
 
     &_item {
       width: 100%;
-
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
