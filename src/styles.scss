@@ -1,19 +1,54 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.dev/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+@use "./app/styles/_theme-colors.scss" as my-theme;
+@use "./app/styles/mixins" as *;
+@use "./app/styles/variables" as *;
+@use "sass:map";
 
 html {
-  @include mat.theme((
-    color: (
-      theme-type: light,
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}/* You can add global styles to this file, and also import other style files */
+  @include mat.theme(
+    (
+      color: (
+        primary: my-theme.$primary-palette,
+        tertiary: my-theme.$tertiary-palette,
+      ),
+      typography: Montserrat,
+      density: 0,
+    )
+  );
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Montserrat;
+}
+
+.main-dialog .mat-mdc-dialog-surface {
+  border-radius: 0;
+}
+
+@each $name, $glyph in $font_size {
+  .mat-typography .text-#{$name} {
+    font-size: $glyph;
+  }
+}
+
+@each $name, $glyph in $font-weights {
+  .mat-typography .text-#{$name} {
+    font-weight: $glyph;
+  }
+}
+
+@each $name, $glyph in $font-colors {
+  .mat-typography .text-#{$name} {
+    color: $glyph;
+  }
+}

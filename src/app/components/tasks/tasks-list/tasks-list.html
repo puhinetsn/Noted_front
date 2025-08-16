@@ -1,0 +1,25 @@
+<div class="tasks_container" cdkDropListGroup>
+  <div
+    cdkDropList
+    #taskList="cdkDropList"
+    [cdkDropListData]="tasks()"
+    (cdkDropListDropped)="drop($event)"
+    class="tasks_list"
+    id="tasks-{{ status() }}"
+    [cdkDropListConnectedTo]="createStatusIds()"
+  >
+    @for (task of tasks(); track task.id) {
+    <app-task
+      class="tasks_item"
+      cdkDrag
+      [task]="task"
+      (taskRemoved)="onTaskDelete(task.id)"
+      (taskUpdated)="onTaskUpdated($event)"
+    ></app-task>
+    }
+  </div>
+
+  <button class="tasks_new" (click)="openDialog()">
+    <mat-icon class="tasks_new_icon">add_2</mat-icon>
+  </button>
+</div>

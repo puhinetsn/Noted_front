@@ -1,0 +1,12 @@
+<div class="tasks_container">
+  <app-status-chip class="tasks_status" [status]="status()"> </app-status-chip>
+  <app-tasks-list
+    class="tasks_list"
+    (saveTask)="onSaveTask($event)"
+    [tasks]="tasks()"
+    [status]="status().id"
+    [statuses]="statuses()"
+    (taskRemoved)="onTaskDelete($event)"
+    (taskUpdated)="onTaskUpdate($event)"
+  ></app-tasks-list>
+</div>

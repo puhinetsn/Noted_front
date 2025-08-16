@@ -1,0 +1,17 @@
+<h3 mat-dialog-title>
+  {{ isEditMode ? "Edit Project Name" : "Enter Project Name:" }}
+</h3>
+<mat-dialog-content>
+  <form [formGroup]="projectName">
+    <mat-form-field>
+      <mat-label>Enter Here...</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onClose()">Cancel</button>
+  <button matButton (click)="onCreate()" cdkFocusInitial>
+    {{ isEditMode ? "Update" : "Create" }}
+  </button>
+</mat-dialog-actions>

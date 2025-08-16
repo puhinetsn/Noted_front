@@ -1,0 +1,32 @@
+<div class="noted_container">
+  <mat-toolbar>
+    <button
+      mat-icon-button
+      (click)="toggleSidenav(snav)"
+      [hidden]="!isMobile()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="noted_logo">
+      <img class="noted_logo_img" src="assets/logo.png" />
+      <h1 class="text-bold text-3xl text-primary noted_logo_name">Noted</h1>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="noted_sidenav_container">
+    <mat-sidenav
+      #snav
+      [mode]="isMobile() ? 'over' : 'side'"
+      [opened]="!isMobile() || sidenavOpened"
+      [disableClose]="!isMobile()"
+    >
+      <app-project-list></app-project-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="noted_content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,7 @@
+<div class="change">
+  <p>Change from: {{ change().created_at | date : "short" }}</p>
+  <p>
+    {{ change().changed_field | uppercase }} went from
+    {{ change().old_field_value }} to {{ change().new_field_value }}
+  </p>
+</div>

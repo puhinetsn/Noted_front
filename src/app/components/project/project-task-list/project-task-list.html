@@ -1,0 +1,20 @@
+<div class="list_container">
+  @for (task of filteredTasks(); track task.status.id){
+  <app-status-tasks
+    class="list_item"
+    [status]="task.status"
+    (saveTask)="onSaveTask($event)"
+    [tasks]="task.statusTasks"
+    [statuses]="statuses()"
+    (taskRemoved)="onTaskDelete($event)"
+    (taskUpdated)="onTaskUpdate($event)"
+  ></app-status-tasks>
+  } @if(newStatusCreation()){
+  <app-create-status
+    class="list_item"
+    (saveStatus)="onSaveStatus($event)"
+  ></app-create-status>
+  } @else {
+  <app-add-status class="list_item" (click)="addNewStatus()"></app-add-status>
+  }
+</div>

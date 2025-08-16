@@ -1,0 +1,35 @@
+@use "mixins" as *;
+@use "variables" as vars;
+@use "sass:map";
+
+.task {
+  &_container {
+    background-color: map.get(vars.$task-colors, main);
+    border-radius: 10px;
+    padding: 10px 5px;
+    @include flex(column, space-between);
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+  }
+
+  &_delete {
+    @include flex(row, flex-end);
+    width: 100%;
+  }
+
+  &_name {
+    background-color: map.get(vars.$task-colors, secondary);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+
+    &_item {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { FormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogActions,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { Task, TaskFields, TaskPriority } from '../../../models/task.type';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TaskChanges } from '../task-changes/task-changes';
+
+interface PrioritySelectOption {
+  value: TaskPriority;
+  name: string;
+  color: string;
+}
+
+@Component({
+  selector: 'app-create-task-modal',
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatDatepickerModule,
+    TaskChanges,
+  ],
+  providers: [provideNativeDateAdapter()],
+  templateUrl: './create-task-modal.html',
+  styleUrl: './create-task-modal.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CreateTaskModal {
+  readonly dialogRef = inject(MatDialogRef<CreateTaskModal>);
+  data = inject<Task>(MAT_DIALOG_DATA);
+  isEditMode = !!this.data;
+  task = new FormGroup({
+    name: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.required, Validators.maxLength(60)],
+    }),
+    description: new FormControl<string>('', {
+      nonNullable: true,
+      validators: [Validators.maxLength(120)],
+    }),
+    priority: new FormControl<TaskPriority | null>(TaskPriority.MEDIUM, {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    begin_date: new FormControl<Date | null>(null),
+    end_date: new FormControl<Date | null>(null),
+  });
+
+  constructor() {
+    if (this.isEditMode && this.data) {
+      this.task.patchValue({
+        name: this.data.name,
+        description: this.data.description,
+        priority: this.data.priority as TaskPriority,
+        begin_date: this.data.begin_date,
+        end_date: this.data.end_date,
+      });
+    }
+  }
+
+  prioritySelectOptions: PrioritySelectOption[] = [
+    {
+      value: TaskPriority.LOW,
+      name: 'Low',
+      color: 'low_priority',
+    },
+    {
+      value: TaskPriority.MEDIUM,
+      name: 'Medium',
+      color: 'medium_priority',
+    },
+    {
+      value: TaskPriority.HIGH,
+      name: 'High',
+      color: 'high_priority',
+    },
+    {
+      value: TaskPriority.CRITICAL,
+      name: 'Critical',
+      color: 'critical_priority',
+    },
+  ];
+
+  selectedPriority = this.prioritySelectOptions[1].value;
+
+  onClose(): void {
+    this.dialogRef.close();
+  }
+
+  onCreate(): void {
+    const taskValue = this.task.value;
+    const taskValueEntries = Object.entries(taskValue).filter(
+      (entry) => this.task.get(entry[0])?.dirty
+    );
+    console.log(Object.fromEntries(taskValueEntries));
+    if (taskValueEntries.length > 0) {
+      this.dialogRef.close(Object.fromEntries(taskValueEntries));
+    } else {
+      this.dialogRef.close();
+    }
+  }
+}
