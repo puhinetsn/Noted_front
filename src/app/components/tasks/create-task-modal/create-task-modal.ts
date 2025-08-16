@@ -16,6 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { TaskChanges } from '../task-changes/task-changes';
 
 interface PrioritySelectOption {
   value: TaskPriority;
@@ -37,6 +38,7 @@ interface PrioritySelectOption {
     ReactiveFormsModule,
     MatIconModule,
     MatDatepickerModule,
+    TaskChanges,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './create-task-modal.html',

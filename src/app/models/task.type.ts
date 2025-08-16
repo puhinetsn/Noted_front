@@ -9,7 +9,15 @@ export interface Task {
   priority: TaskPriority;
   begin_date: Date | null;
   end_date: Date | null;
-  ChangeLog: [];
+  ChangeLog: [TaskChange];
+}
+
+export interface TaskChange {
+  created_at: Date;
+  task_id: number;
+  old_field_value: string;
+  new_field_value: string;
+  changed_field: keyof TaskFields;
 }
 
 export interface TaskFields {
