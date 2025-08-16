@@ -40,6 +40,12 @@ export class ProjectTaskList implements OnInit {
     );
   }
 
+  onTaskUpdate($event: Task) {
+    this.tasks.update((tasks) =>
+      tasks ? tasks.map((task) => (task.id == $event.id ? $event : task)) : []
+    );
+  }
+
   filteredTasks = computed(() => {
     const statuses = this.statuses();
     const tasks = this.tasks();

@@ -31,6 +31,7 @@ export class TasksList {
   statuses = input.required<Status[]>();
   tasksService = inject(TaskService);
   taskRemoved = output<number>();
+  taskUpdated = output<Task>();
 
   onTaskDelete(id: number) {
     this.taskRemoved.emit(id);
@@ -56,14 +57,17 @@ export class TasksList {
       );
     }
 
-    const { ChangeLog, ...task } = event.container.data[event.currentIndex];
+    this.onTaskUpdated(event.container.data[event.currentIndex]);
+  }
 
+  onTaskUpdated($event: Task) {
     this.tasksService
-      .findAndUpdateTask(task.id, {
-        ...task,
+      .findAndUpdateTask($event.id, {
         status_id: this.status(),
       })
-      .subscribe(() => {});
+      .subscribe((result) => {
+        this.taskUpdated.emit(result);
+      });
   }
 
   openDialog(): void {

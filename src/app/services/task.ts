@@ -18,7 +18,7 @@ export class TaskService {
     return this.httpClient.post<Task>(`${this.url}/tasks`, info);
   }
 
-  findAndUpdateTask(id: number, info: TaskFields): Observable<Task> {
+  findAndUpdateTask(id: number, info: Partial<TaskFields>): Observable<Task> {
     return this.httpClient.put<Task>(`${this.url}/tasks/${id}`, info);
   }
 

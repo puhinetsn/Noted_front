@@ -7,5 +7,6 @@
     [status]="status().id"
     [statuses]="statuses()"
     (taskRemoved)="onTaskDelete($event)"
+    (taskUpdated)="onTaskUpdate($event)"
   ></app-tasks-list>
 </div>

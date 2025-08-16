@@ -2,6 +2,7 @@ import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogContent,
   MatDialogRef,
@@ -10,7 +11,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { TaskFields, TaskPriority } from '../../../models/task.type';
+import { Task, TaskFields, TaskPriority } from '../../../models/task.type';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { provideNativeDateAdapter } from '@angular/material/core';
@@ -44,6 +45,8 @@ interface PrioritySelectOption {
 })
 export class CreateTaskModal {
   readonly dialogRef = inject(MatDialogRef<CreateTaskModal>);
+  data = inject<Task>(MAT_DIALOG_DATA);
+  isEditMode = !!this.data;
   task = new FormGroup({
     name: new FormControl<string>('', {
       nonNullable: true,
@@ -60,6 +63,18 @@ export class CreateTaskModal {
     begin_date: new FormControl<Date | null>(null),
     end_date: new FormControl<Date | null>(null),
   });
+
+  constructor() {
+    if (this.isEditMode && this.data) {
+      this.task.patchValue({
+        name: this.data.name,
+        description: this.data.description,
+        priority: this.data.priority as TaskPriority,
+        begin_date: this.data.begin_date,
+        end_date: this.data.end_date,
+      });
+    }
+  }
 
   prioritySelectOptions: PrioritySelectOption[] = [
     {
@@ -91,6 +106,15 @@ export class CreateTaskModal {
   }
 
   onCreate(): void {
-    this.dialogRef.close(this.task.value);
+    const taskValue = this.task.value;
+    const taskValueEntries = Object.entries(taskValue).filter(
+      (entry) => this.task.get(entry[0])?.dirty
+    );
+    console.log(Object.fromEntries(taskValueEntries));
+    if (taskValueEntries.length > 0) {
+      this.dialogRef.close(Object.fromEntries(taskValueEntries));
+    } else {
+      this.dialogRef.close();
+    }
   }
 }

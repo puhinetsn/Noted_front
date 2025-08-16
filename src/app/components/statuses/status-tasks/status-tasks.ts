@@ -18,11 +18,15 @@ export class StatusTasks {
   saveTask = output<CreateStatusTask>();
   tasks = input.required<Task[]>();
   statuses = input.required<Status[]>();
-
   taskRemoved = output<number>();
+  taskUpdated = output<Task>();
 
   onTaskDelete(id: number) {
     this.taskRemoved.emit(id);
+  }
+
+  onTaskUpdate($event: Task) {
+    this.taskUpdated.emit($event);
   }
 
   onSaveTask(info: CreateTaskFormData) {

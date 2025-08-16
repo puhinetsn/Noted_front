@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
+  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogContent,
   MatDialogRef,
@@ -15,6 +16,7 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Project } from '../../../models/project.type';
 
 @Component({
   selector: 'app-new-project-modal',
@@ -33,12 +35,22 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class NewProjectModal {
   readonly dialogRef = inject(MatDialogRef<NewProjectModal>);
+  data = inject<Project>(MAT_DIALOG_DATA);
+  isEditMode = !!this.data;
   projectName = new FormGroup({
     name: new FormControl<string>('', {
       nonNullable: true,
       validators: [Validators.required, Validators.maxLength(120)],
     }),
   });
+
+  constructor() {
+    if (this.isEditMode && this.data) {
+      this.projectName.patchValue({
+        name: this.data.name,
+      });
+    }
+  }
 
   onClose(): void {
     this.dialogRef.close();

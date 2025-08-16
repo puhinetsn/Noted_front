@@ -7,6 +7,7 @@
     [tasks]="task.statusTasks"
     [statuses]="statuses()"
     (taskRemoved)="onTaskDelete($event)"
+    (taskUpdated)="onTaskUpdate($event)"
   ></app-status-tasks>
   } @if(newStatusCreation()){
   <app-create-status

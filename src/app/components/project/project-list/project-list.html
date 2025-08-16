@@ -2,7 +2,7 @@
   @for(project of projects(); track project.id){
   <app-projects
     class="projects_item"
-    [project_name]="project.name"
+    [project]="project"
     [routerLink]="projectLink(project)"
     (projectRemoved)="onProjectDelete(project.id)"
   ></app-projects>

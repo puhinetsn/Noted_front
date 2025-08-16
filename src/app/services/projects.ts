@@ -18,6 +18,10 @@ export class ProjectsService {
     return this.httpClient.post<Project>(`${this.url}/projects`, info);
   }
 
+  findAndUpdateProject(id: number, info: ProjectFields): Observable<Project> {
+    return this.httpClient.put<Project>(`${this.url}/projects/${id}`, info);
+  }
+
   removeProject(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.url}/projects/${id}`);
   }
